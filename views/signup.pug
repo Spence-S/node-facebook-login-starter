@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  div(class="container")
+    div(class="row")
+       div(class="col-sm-2")
+       div(class="col-sm-8")
+         h1(class="center-block") Signup
+         form
+           div(class="form-group")
+             label(for="email") Name:
+             input(class="form-control")
+           div(class="form-group")
+             label(for="email") Email:
+             input(class="form-control")
+           div(class="form-group")
+             label(form="password") Password:
+             input(class="form-control")
+           div(class="form-group")
+             label(form="password") Confirm Password:
+             input(class="form-control")
+           button(type="submit" class="btn btn-info") Signup!
+           button(class="btn btn-link") Login
