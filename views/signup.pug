@@ -1,23 +1,23 @@
 extends layout
 
 block content
-  div(class="container")
-    div(class="row")
-       div(class="col-sm-2")
-       div(class="col-sm-8")
-         h1(class="center-block") Signup
-         form
-           div(class="form-group")
-             label(for="email") Name:
-             input(class="form-control")
-           div(class="form-group")
+  div.container
+    div.row
+       div.col-sm-2
+       div.col-sm-8
+         h1.center-block Signup
+         form(method="POST" action="/users/signup")
+           div.form-group
+             label(for="username") Name:
+             input.form-control(name="name")
+           div.form-group
              label(for="email") Email:
-             input(class="form-control")
-           div(class="form-group")
-             label(form="password") Password:
-             input(class="form-control")
-           div(class="form-group")
-             label(form="password") Confirm Password:
-             input(class="form-control")
-           button(type="submit" class="btn btn-info") Signup!
-           button(class="btn btn-link") Login
+             input.form-control(name="email")
+           div.form-group
+             label(for="password") Password:
+             input.form-control(name="password")
+           div.form-group
+             label(for="password") Confirm Password:
+             input.form-control
+           button.btn.btn-info(type="submit") Signup!
+           button.btn.btn-link Login

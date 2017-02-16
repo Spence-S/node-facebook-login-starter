@@ -1,5 +1,8 @@
 extends layout
 
 block content
-  h1= title
+  h1 Hello #{name}
   p Welcome to #{title}
+
+  p
+    a(href="/settings") go to account settings

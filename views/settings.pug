@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 Personal Profile Information
+  ul.list-group
+    li.list-group-item Name: #{username}
+    li.list-group-item UserName: #{username}
+    li.list-group-item Primary Email: #{email}
+    li
+      a(href="/updatepw") update password

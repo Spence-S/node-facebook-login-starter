@@ -1,10 +1,33 @@
 var mongoose = require('mongoose');
+var bcrypt = require('bcrypt-nodejs');
 
 var UserSchema = new mongoose.Schema({
-  username: String,
   password: String,
   email: String
 });
+
+//Password hash
+UserSchema.pre('save', function save(next){
+  let user = this;
+  if(!user.isModified('password')){
+    return next();
+  }
+  bcrypt.genSalt(10, (err, salt) => {
+    if(err){return next(err);}
+    bcrypt.hash(user.password, salt, null, (err, hash) =>{
+      if(err){ return next(err);}
+      user.password = hash;
+      next();
+    });
+  });
+});
+
+//compare password method
+UserSchema.methods.comparePassword = function comparePassword(candidatePassword, cb){
+  bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
+    cb(err, isMatch);
+  });
+};
 
 var User = mongoose.model('User', UserSchema);
 
