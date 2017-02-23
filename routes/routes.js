@@ -1,30 +1,34 @@
-var express = require('express');
-var router = express.Router();
-var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+const express = require('express');
+const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
+const router = express.Router();
 
-router.all('*',ensureLoggedIn('/users/login'));
+router.all('*', ensureLoggedIn('/users/login'));
 
 /* GET home page. */
-router.get('/',function(req, res, next) {
-  console.log(req.user);
+router.get('/', (req, res) => {
   res.render('index',
-  {
-    title: 'Express',
-    name: req.user.facebook.name.givenName,
-    email: req.user.email,
-    profile: req.user.facebook,
-  });
+    {
+      title: 'Express',
+      name: req.user.facebook.name.givenName,
+      email: req.user.email,
+      profile: req.user.facebook
+    });
 });
 
-router.get('/settings', (req, res, next) => {
+router.get('/settings', (req, res) => {
+  const { user } = req;
   res.render('settings',
-    req.user
+    user
   );
-})
+});
 
-router.get('/updatepw', (req, res, next) => {
-  res.render('updatepw');
-})
+router.get('/managepw', (req, res) => {
+  res.render('managepw', { user: req.user });
+});
+
+router.post('/managepw', (req, res) => {
+
+});
 
 module.exports = router;

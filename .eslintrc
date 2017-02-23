@@ -1,0 +1,10 @@
+{
+  extends: airbnb,
+  rules: {
+    "no-underscore-dangle": off,
+    "no-shadow": ["error", { "allow": ["err","done"] }],
+    "consistent-return": off,
+    "no-param-reassign": off,
+    "comma-dangle": off
+    }
+}
