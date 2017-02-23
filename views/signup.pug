@@ -6,18 +6,20 @@ block content
        div.col-sm-2
        div.col-sm-8
          h1.center-block Signup
-         form(method="POST" action="/users/signup")
+         form(method="POST" action="/users/signup" id="signup" role="form" data-toggle="validator")
            div.form-group
              label(for="username") Name:
              input.form-control(name="name")
            div.form-group
-             label(for="email") Email:
-             input.form-control(name="email")
+             label(for="email") Email:*
+             input.form-control(name="email" id="email" type="email" required)
            div.form-group
-             label(for="password") Password:
-             input.form-control(name="password")
+             label(for="password") Password:*
+             input.form-control(name="password" id="pw" type="password" required)
            div.form-group
-             label(for="password") Confirm Password:
-             input.form-control
-           button.btn.btn-info(type="submit") Signup!
-           button.btn.btn-link Login
+             label(for="password") Confirm Password:*
+             input.form-control(id="pwc" type="password" data-match="#pw" required)
+           button.btn.btn-info(type="submit" id="btn") Signup!
+           a.btn.btn-link(href='users/login') Login
+    script.
+      $('#signup').validator()

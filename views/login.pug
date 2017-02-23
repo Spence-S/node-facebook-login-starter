@@ -2,16 +2,23 @@ extends layout
 
 block content
   div.container
-  div.row
-     div.col-sm-2
-     div.col-sm-8
-       h1.center-block Login
-       form(method="POST" action="/users/login")
-         div.form-group
-           label(for="email") Email:
-           input.form-control(name="email" value="")
-         div.form-group
-           label(form="password") Password:
-           input.form-control(name="password" value="")
-         button.btn.btn-info(type="submit") Login
-         button.btn.btn-link Signup!
+    div.row
+       div.col-sm-2
+       div.col-sm-8
+         h1.center-block Login
+         form(method="POST" autocomplete="false" action="/users/login" id="login" role='form' data-type='validator')
+           div.form-group
+             label(for="email") Email:
+             input.form-control(name="email" value="" type="email" required)
+           div.form-group
+             label(form="password") Password:
+             input.form-control(name="password" value="" type='password' required)
+           button.btn.btn-info(type="submit") Login
+           a.btn.btn-link(href='/users/signup') Signup!
+    .row
+      .col-sm-2
+      .col-sm-8
+        br
+        a.btn.btn-primary(href='/users/auth/facebook') Login With Facebook
+  script.
+    $('#login').validator();

@@ -35,9 +35,10 @@ router.get('/signup', (req, res, next) => {
 });
 
 //POST /users/signup
+//this will save the user to the database
 router.post('/signup', (req, res, next) => {
-  let { email, password } = req.body;
-  let user = new User({email: email, password: password});
+  let { email, password, name } = req.body;
+  let user = new User({email: email, password: password, name: name});
   user.save()
     .then( user => {
       req.login(user, () => {
@@ -59,5 +60,20 @@ router.get('/logout', (req, res, next) => {
     res.redirect('/');
   }
 });
+
+//FB routes
+// Redirect the user to Facebook for authentication.  When complete,
+// Facebook will redirect the user back to the application at
+//     users/auth/facebook/callback
+router.get('/auth/facebook', passport.authenticate('facebook', {
+  scope: ['public_profile','email', 'user_friends', 'user_relationships']
+  }));
+// Facebook will redirect the user to this URL after approval.  Finish the
+// authentication process by attempting to obtain an access token.  If
+// access was granted, the user will be logged in.  Otherwise,
+// authentication has failed.
+router.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { successRedirect: '/',
+                                      failureRedirect: '/login' }));
 
 module.exports = router;

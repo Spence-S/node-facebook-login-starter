@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  div.container
+    div.row
+       div.col-sm-2
+       div.col-sm-8
+         h4.center-block Change Your Password
+         form(method="POST" autocomplete="false" action="/updatepw" id="pwu" role="form" data-toggle="validator")
+           div.form-group
+             label(for="password" autocomplete='false') Current Password:
+             input.form-control(name="email" value="" type="password" required)
+           div.form-group
+             label(form="password") New Password:
+             input.form-control(name="password" value="" type="password" required)
+           div.form-group
+             label(form="password") Re-type New Password:
+             input.form-control(name="password" value="" type="password" required)
+           button.btn.btn-info(type="submit") Submit Change
+  script.
+   $('#pwu').validator()

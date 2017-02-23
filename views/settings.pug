@@ -1,10 +1,28 @@
 extends layout
 
 block content
-  h1 Personal Profile Information
-  ul.list-group
-    li.list-group-item Name: #{username}
-    li.list-group-item UserName: #{username}
-    li.list-group-item Primary Email: #{email}
-    li
-      a(href="/updatepw") update password
+  .container
+    .row
+      .col-xs-2
+      .col-xs-1
+        img.img-rounded.pull-right(src=facebook._json.picture.data.url)
+      .col-xs-9
+        h1.center-block Personal Profile Information
+    .row
+      .col-xs-3
+      .col-xs-6
+        ul.list-group
+          li.list-group-item
+            strong.pull-left First Name:
+            p #{facebook.name.givenName}
+          li.list-group-item
+            strong.pull-left Last Name:
+            p #{facebook.name.familyName}
+          li.list-group-item
+            strong.pull-left Primary Email:
+            p #{email}
+          li.list-group-item
+            strong.pull-left Relationship Status:
+            p #{facebook._json.relationship_status}
+          li.list-group-item
+            a(href="/updatepw") update password
