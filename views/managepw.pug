@@ -7,29 +7,30 @@ block content
       .col-sm-2
       .col-sm-8
         h4.center-block Add Password
-        form(method="POST" autocomplete="false" action="/updatepw" id="pwu" role="form" data-toggle="validator")
+        form(method="POST" autocomplete="false" action="/managepw" id="pwu" role="form" data-toggle="validator")
           .form-group
             label(form="password") Password:
-            input.form-control(name="password" value="" type="password" required)
+            input.form-control(id="pw" name="password" value="" type="password" required)
           .form-group
             label(form="password") Re-type Password:
-            input.form-control(name="password" value="" type="password" required)
+            input.form-control(value="" name="passwordConfirm" type="password" data-match="#pw" required)
           button.btn.btn-info(type="submit") Submit Change
   else
     .row
       .col-sm-2
       .col-sm-8
         h4.center-block Change Your Password
-        form(method="POST" autocomplete="false" action="/updatepw" id="pwu" role="form" data-toggle="validator")
+        form(method="POST" autocomplete="false" action="/managepw" id="pwu" role="form" data-toggle="validator")
           .form-group
-            label(for="password" autocomplete='false') Current Password:
-            input.form-control(name="email" value="" type="password" required)
+            label(for="email" autocomplete='false') Current Password:
+            input.form-control(name="currentPassword" value="" type="password" required)
           .form-group
-            label(form="password") New Password:
-            input.form-control(name="password" value="" type="password" required)
+            label(for="password") New Password:
+            input.form-control(id="pw" name="password" value="" type="password" required)
           .form-group
-            label(form="password") Re-type New Password:
-            input.form-control(name="password" value="" type="password" required)
+            label(for="password") Re-type New Password:
+            input.form-control(value="" name="passwordConfirm" type="password" data-match="#pw" required)
           button.btn.btn-info(type="submit") Submit Change
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js")
   script.
    $('#pwu').validator()

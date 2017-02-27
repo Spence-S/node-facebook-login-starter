@@ -7,8 +7,11 @@ const router = express.Router();
 
 const authenticate = passport.authenticate('local',
   {
-    failureRedirect: '/users/signup',
+    failureRedirect: '/users/login',
     successReturnToOrRedirect: '/',
+    successRedirect: '/',
+    failureFlash: true,
+    successFlash: 'Welcome'
   });
 
 // GET /users
@@ -22,7 +25,6 @@ router.get('/', (req, res) => {
 router.get('/login', ensureLoggedOut('/'), (req, res) => {
   res.render('login');
 });
-
 
 // POST /users/login
 router.post('/login', authenticate, (req, res) => {

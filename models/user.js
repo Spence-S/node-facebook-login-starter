@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
   facebook: Object,
 });
 
-// Password hash
+// Pre Save Password hash
 UserSchema.pre('save', function save(next) {
   const user = this;
   if (!user.isModified('password')) {

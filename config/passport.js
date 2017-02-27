@@ -13,6 +13,10 @@ passport.use(new LocalStrategy({ usernameField: 'email' },
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
       }
+      // if no password is set on the user in the db
+      if (!user.password) {
+        return done(null, false, { message: 'There is no password set for this email. Would you like to set a password now?' });
+      }
       // if an email match is found
       // compare the input password
       user.comparePassword(password, (err, isMatch) => {
@@ -22,7 +26,7 @@ passport.use(new LocalStrategy({ usernameField: 'email' },
         if (isMatch) { return done(null, user); }
         // if password doesn't match, don't log in user and alert
         // that password didn't match
-        return done(null, false, { msg: 'Invalid email or password' });
+        return done(null, false, { message: 'Invalid email or password' });
       });
     })
     .catch(err => done(err));
@@ -37,12 +41,10 @@ passport.use(new FacebookStrategy({
   profileFields: [
     'id',
     'displayName',
-    'first_name',
-    'last_name',
     'photos',
     'email',
     'friends',
-    'relationship_status',
+    'name'
   ],
 },
   (accessToken, refreshToken, profile, done) => {
