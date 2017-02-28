@@ -4,8 +4,9 @@ const bcrypt = require('bcrypt-nodejs');
 const UserSchema = new mongoose.Schema({
   name: String,
   password: String,
-  email: { type: String, required: true },
+  email: { type: String, required: true, lowercase: true, trim: true },
   facebook: Object,
+  ipAddress: Array
 });
 
 // Pre Save Password hash
