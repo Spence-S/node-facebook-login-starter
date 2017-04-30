@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 // connect db
-mongoose.connect('mongodb://localhost/ppplayground');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/my-node-app');
 
 // show errors and indicate success
 const db = mongoose.connection;

@@ -2,8 +2,12 @@
   "name": "passport-playground",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "6.10.2"
+  },
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www"
   },
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",

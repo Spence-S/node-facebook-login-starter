@@ -2,15 +2,16 @@
 
 This is my starter package for node, express, mongo, and pug template projects.
 
-## Features
-*Built on express-generator
-*Authentication with passport js..
- ..login and signup with local(email and password) or facebook and connect the methods if desired
-*Bootstrap 3
-*Mongoose ORM
-*Arrow functions
-*promises
-*best practices
+## Demo
 
-This project was heavily inspired by hackathon-starter and by crocodile js...
-Links to these projects coming.
+
+
+## Features
+* Authentication with passport js
+* Bootstrap
+* Pug
+* Mongoose
+* User admin
+
+
+This project was heavily inspired by [hackathon-starter](https://github.com/sahat/hackathon-starter) and by [crocodile js](https://github.com/crocodilejs/crocodile-node-mvc-framework)
